@@ -22,6 +22,7 @@ public class TicketController {
         list.add("01111220283314");
         list.add("01161725303211");
         list.add("07082425283208");
+        list.add("02030609202608");
         list.add("05101620213207");
         list.add("03041015212410");
         list.add("03081014212714");
@@ -98,7 +99,7 @@ public class TicketController {
             }
             rewardSum += reward;
 
-            System.out.println(o + "，" + p + "，奖金：" + reward);
+            System.out.println(o + "，红球数量：" + countRed + "，蓝球数量：" + (countBlue ? 1 : 0) + "，" + p + "，奖金：" + reward);
         }
         System.out.println("总奖金：" + rewardSum);
 
