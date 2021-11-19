@@ -7,6 +7,7 @@ import '@/components/svgIcon/index'
 import util from '@/components/utils/util.js';
 import constant from '@/components/utils/constant.js';
 import Directives from '@/components/directives';
+import '@/assets/css/main.css';
 
 Vue.prototype.util = util;
 Vue.prototype.constant = constant;
