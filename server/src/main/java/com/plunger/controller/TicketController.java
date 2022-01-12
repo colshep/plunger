@@ -1,49 +1,37 @@
 package com.plunger.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TicketController {
 
     public static void main(String[] args) {
-        String[] result = new String[]{"01", "04", "06", "14", "20", "28", "08" };
-        List<String> list = new ArrayList<>();
-        list.add("07182023272914");
-        list.add("08111523242711");
-        list.add("05092127283307");
-        list.add("12131416282905");
-        list.add("12131421293007");
-        list.add("09152125282907");
-        list.add("01101420233210");
-        list.add("14151821273213");
-        list.add("01021819263105");
-        list.add("03041920253107");
-        list.add("01111220283314");
-        list.add("01161725303211");
-        list.add("07082425283208");
-        list.add("02030609202608");
-        list.add("05101620213207");
-        list.add("03041015212410");
-        list.add("03081014212714");
-        list.add("04101426273312");
-        list.add("10131621253214");
-        list.add("03122327283210");
-        list.add("08141920233115");
-        list.add("01171820323305");
-        list.add("09101318252615");
-        list.add("02071923273107");
+        String[] result = "07 10 12 16 19 31 16".split(" ");
+        String[] list = ("02 03 13 15 17 21 02\n" +
+                "02 03 13 15 17 21 03\n" +
+                "03 04 10 15 21 24 03\n" +
+                "05 06 15 30 31 33 03\n" +
+                "12 13 14 16 28 29 05\n" +
+                "08 09 10 18 32 33 06\n" +
+                "07 18 20 21 22 25 08\n" +
+                "02 17 18 21 28 29 09\n" +
+                "04 07 20 25 26 29 09\n" +
+                "02 14 20 23 32 33 10\n" +
+                "08 11 15 23 24 27 11\n" +
+                "01 04 06 10 17 23 12\n" +
+                "07 13 14 21 29 30 12\n" +
+//                "01 03 18 20 28 29 14\n" +
+//                "06 13 18 19 21 22 14\n" +
+//                "07 18 20 23 27 29 14\n" +
+//                "11 14 15 24 31 32 14\n" +
+//                "11 18 24 28 30 32 14\n" +
+//                "16 21 25 28 29 31 14\n" +
+//                "17 18 20 23 27 29 14\n" +
+                "06 08 11 15 20 25 15").split("\n");
 
         int rewardSum = 0;
         System.out.println("开奖号码：" + Arrays.asList(result));
         for (String str : list) {
-            String[] arr = new String[7];
-            List<String> o = new ArrayList<>();
-            for (int i = 0; i < 7; i++) {
-                arr[i] = str.substring(i * 2, i * 2 + 2);
-                o.add(str.substring(i * 2, i * 2 + 2));
-            }
-
+            String[] arr = str.split(" ");
             String p = "未中奖";
             int reward = 0;
             boolean countBlue = false;
@@ -58,7 +46,6 @@ public class TicketController {
                     }
                 }
             }
-
 
             /**
              * 一等奖：投注号码与当期开奖号码全部相同（顺序不限，下同），即中奖；
@@ -78,28 +65,29 @@ public class TicketController {
              * 五等奖：单注奖金固定为10元。
              * 六等奖：单注奖金固定为5元。
              */
+            int mult = 2;
             if (countRed == 6 & countBlue) {
                 p = "一等奖";
-                reward = 5000000 * 2;
+                reward = 5000000 * mult;
             } else if (countRed == 6) {
                 p = "二等奖";
-                reward = 5000000 * 2;
+                reward = 5000000 * mult;
             } else if (countRed == 5 && countBlue) {
                 p = "三等奖";
-                reward = 3000 * 2;
+                reward = 3000 * mult;
             } else if (countRed == 5 || (countRed == 4 && countBlue)) {
                 p = "四等奖";
-                reward = 200 * 2;
+                reward = 200 * mult;
             } else if (countRed == 4 || (countRed == 3 && countBlue)) {
                 p = "五等奖";
-                reward = 10 * 2;
+                reward = 10 * mult;
             } else if (countBlue) {
                 p = "六等奖";
-                reward = 5 * 2;
+                reward = 5 * mult;
             }
             rewardSum += reward;
 
-            System.out.println(o + "，红球数量：" + countRed + "，蓝球数量：" + (countBlue ? 1 : 0) + "，" + p + "，奖金：" + reward);
+            System.out.println(Arrays.asList(arr) + "，红球数量：" + countRed + "，蓝球数量：" + (countBlue ? 1 : 0) + "，" + p + "，奖金：" + reward);
         }
         System.out.println("总奖金：" + rewardSum);
 
